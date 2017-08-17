@@ -36,17 +36,21 @@
 //        }];
 //    
     
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退!出!" message:@"上腿 APP" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+//    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退!出!" message:@"退出APP" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
     
     [alert show];
+
     
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if(buttonIndex ==1){
         
-        [self exitApplication];
+//         [self exitApplication];
+        
+        [self exitApplication1];
+        
     }
     
 }
@@ -72,6 +76,38 @@
         //exit(0);
         
 }
+#pragma mark - 第二种方法
+- (void)exitApplication1{
+    
+    [UIView beginAnimations:@"exitApplication" context:nil];
+    
+    [UIView setAnimationDuration:0.5];
+    
+    [UIView setAnimationDelegate:self];
+    
+    // [UIView setAnimationTransition:UIViewAnimationCurveEaseOut forView:self.view.window cache:NO];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    [UIView setAnimationTransition:UIViewAnimationCurveEaseOut forView:delegate.window cache:NO];
+    
+    [UIView setAnimationDidStopSelector:@selector(animationFinished:finished:context:)];
+    
+    //self.view.window.bounds = CGRectMake(0, 0, 0, 0);
+    
+    delegate.window.bounds = CGRectMake(0, 0, 0, 0);
+    
+    [UIView commitAnimations];
+    
+}
+- (void)animationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    
+    if ([animationID compare:@"exitApplication"] == 0) {
+        exit(0);
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
