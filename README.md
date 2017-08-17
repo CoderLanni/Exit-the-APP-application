@@ -1,4 +1,8 @@
 # 代码实现退出 APP 应用程序
+[使用介绍](http://blog.csdn.net/qq_19678579/article/details/77330623)
+
+
+
 程序的死亡大致有三种：自然死亡，即无疾而终，通常就是main()中的一个return 0;自杀，当程序发现自己再活下去已经没有任何意义时，通常会选择自杀。当然，这种自杀也是一种请求式的自杀，即请求OS将自己毙掉
 
 
@@ -90,3 +94,4 @@
 
 ----------
 [项目 demo 下载,喜欢的朋友请给个 start](https://github.com/CoderLanni/Exit-the-APP-application)
+
